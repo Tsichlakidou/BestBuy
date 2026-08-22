@@ -12,7 +12,8 @@ product_list = [
 best_buy = store.Store(product_list)
 
 
-def start(store):
+def start(store_odj):
+    """Run the store user interface."""
     while True:
         print("\nStore Menu")
         print("----------")
@@ -24,19 +25,19 @@ def start(store):
         choice = input("Please choose a number: ")
 
         if choice == "1":
-            all_products = store.get_all_products()
+            all_products = store_odj.get_all_products()
 
             for product in all_products:
                 product.show()
 
         elif choice == "2":
-            total_quantity = store.get_total_quantity()
+            total_quantity = store_odj.get_total_quantity()
             print("Total of", total_quantity, "items in store")
 
         elif choice == "3":
             shopping_list = []
 
-            all_products = store.get_all_products()
+            all_products = store_odj.get_all_products()
 
             for index, product in enumerate(all_products, start=1):
                 print(index, end=". ")
@@ -56,7 +57,7 @@ def start(store):
                 shopping_list.append((product, quantity))
 
             try:
-                total_price = store.order(shopping_list)
+                total_price = store_odj.order(shopping_list)
                 print("Order made! Total payment:", total_price)
 
             except Exception as e:
@@ -68,6 +69,5 @@ def start(store):
 
         else:
             print("Invalid choice.")
-
 
 start(best_buy)

@@ -1,4 +1,5 @@
 class Product:
+    """Represent a product available in the store."""
     def __init__(self, name, price, quantity):
         if name == "":
             raise Exception("Name cannot be empty")
@@ -13,26 +14,33 @@ class Product:
         self.active = True
 
     def get_quantity(self)-> int:
+        """Return the current product quantity."""
         return self.quantity
 
     def set_quantity(self, quantity):
+        """Set the current product quantity."""
         self.quantity = quantity
         if self.quantity ==0:
             self.deactivate()
 
     def is_active(self) -> bool:
+        """Is the product active or not."""
         return self.active
 
     def activate(self):
+        """Activate the product."""
         self.active = True
 
     def deactivate(self):
+        """Deactivate the product."""
         self.active = False
 
     def show(self):
+        """Show the product."""
         print(self.name, "Price:",self.price, "Quantity:", self.quantity)
 
     def buy(self, quantity) -> float:
+        """Make the products buy."""
         if quantity <= 0:
             raise Exception("Quantity must be positive")
 
