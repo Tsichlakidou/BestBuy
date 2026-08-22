@@ -16,13 +16,14 @@ class Product:
         return self.quantity
 
     def set_quantity(self, quantity):
-        if self.quantity <=0:
-            deactivate(self)
+        self.quantity = quantity
+        if self.quantity ==0:
+            self.deactivate()
 
     def is_active(self) -> bool:
         return self.active
 
-    def activate(self) -> bool:
+    def activate(self):
         self.active = True
 
     def deactivate(self):
@@ -38,5 +39,5 @@ class Product:
         if quantity > self.quantity:
             raise Exception("There are not enough products for this purchase")
 
-        self.quantity -= quantity
+        self.set_quantity(self.quantity - quantity)
         return self.price * quantity
